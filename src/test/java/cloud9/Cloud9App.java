@@ -36,6 +36,7 @@ public class Cloud9App
         String baseUrl = "http://10.9.10.139:81/sqlite/Main/login.html";
         driver.get(baseUrl);
         loginPg = new loginObj(driver);
+        loginPg.login();
      }
 /*
      @Test
@@ -70,13 +71,29 @@ public class Cloud9App
 
     @Test
     public void runBook(){
-        loginPg.login();
+       // loginPg.login();
         bookingObj bookPg;
         bookPg = new bookingObj(driver);
         bookPg.assertBookingHeader();
         bookPg.book();
         bookPg.assertSuccess();
     }
+
+
+    @Test
+    public void runBookAndUpdate(){
+        updateBooking updatePg;
+        updatePg = new updateBooking(driver);
+        updatePg.BookAndUpdate("170");
+    }
+
+    @Test
+    public void runDeleteBooking(){
+        deleteBooking deletePg;
+        deletePg = new deleteBooking(driver);
+        deletePg.deleteBook("207");
+    }
+
 
     /*
     @Test
